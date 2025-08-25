@@ -1,4 +1,3 @@
-
 class Solution(object):
     def romanToInt(self, s):
         """
@@ -11,7 +10,7 @@ class Solution(object):
         'X': 10,
         'L': 50,
         'C': 100,
-        'D': 5000,
+        'D': 500,
         'M': 1000
         }
         int_return = 0
@@ -21,11 +20,11 @@ class Solution(object):
             char = s[i]
             power = length - i - 1
             if (char == 'I' or char == 'X' or char == 'C') and i != length - 1:
-                if s[i+1] == 'V' or s[i+1] == 'L' or s[i+1] == 'D':
+                if (s[i+1] == 'V' and char == 'I') or( s[i+1] == 'L' and char == 'X') or (s[i+1] == 'D' and char == 'C'):
                     int_return += roman_dict[s[i+1]] - roman_dict[char]
                     i += 1
                     print("inside 1 if", int_return)
-                elif s[i+1] == 'X' or s[i+1] == 'C' or s[i+1] == 'M':
+                elif (s[i+1] == 'X' and char == 'I') or( s[i+1] == 'C' and char == 'X') or (s[i+1] == 'M' and char == 'C'):
                     int_return += roman_dict[s[i+1]] - roman_dict[char]
                     i += 1
                     print("inside 2 if", int_return)
