@@ -1,4 +1,3 @@
-
 class Solution(object):
     def longestCommonPrefix(self, strs):
         """
@@ -14,7 +13,8 @@ class Solution(object):
                 if char == strs[i][k]:
                     j = k
                 else:
-                    if k != j:
+                    if k != j and k == 0:
+                        print(char)
                         j = -1
                         break
             print("hello ", j)
