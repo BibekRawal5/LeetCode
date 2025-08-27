@@ -1,2 +1,2 @@
 # NeetCode
-Doing LeetCode/NeedCode Problems for fun
+Doing LeetCode/NeetCode Problems for fun
