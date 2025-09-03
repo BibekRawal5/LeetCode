@@ -9,7 +9,7 @@ class Solution(object):
         j = len(s)
         k = [i for i in range(j)]
         if j != len(t):
-            return false
+            return False
         for i in range(j):
             for char in t:
                 if s[i] == char:
