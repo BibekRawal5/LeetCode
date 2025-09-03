@@ -12,17 +12,28 @@ class Solution(object):
             else:
                 return 0
         
+        stations.append([target, 0])
         stops = 0
-        cur = startFuel
-        for dist, fuel in stations:
-            if cur == target:
-                return stops
+        car_fuel = startFuel
+        prev = 0
+        passed_pumps = []
+        covered = 0
 
-            if cur < dist:
-                return -1
+        for pos, fuel in stations:
+            dist = pos - prev
+            prev = pos
+
+            if car_fuel < dist:
+                while passed_pumps and car_fuel < dist:
+                    car_fuel += -heapq.heappop(passed_pumps)
+                    stops += 1
+                if car_fuel < dist:
+                    return -1
             
-            cur += fuel
-            stops += 1
+            car_fuel -= dist
+            heapq.heappush(passed_pumps, -fuel)
+
+        return stops
             
 
                 
