@@ -5,22 +5,13 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        present = False
-        j = len(s)
-        k = [i for i in range(j)]
-        if j != len(t):
+        if len(s) != len(t):
             return False
-        for i in range(j):
-            for char in t:
-                if s[i] == char:
-                    if i not in k:
-                        return False
-                    present = True
-                    k.remove(i)
-                    break
-            if not present:
+        counter = {}
+        for char in set(s):
+            counter[char] = s.count(char) 
+        for char in t:
+            if char not in counter or counter[char] == 0:
                 return False
-            else:
-                present = False
-        return True
-
+            counter[char] -= 1
+        return True 
